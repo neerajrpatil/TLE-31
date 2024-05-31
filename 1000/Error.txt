@@ -1,0 +1,6 @@
+ele 80
+mid 3
+ele 100
+mid 1
+ele 90
+mid 2

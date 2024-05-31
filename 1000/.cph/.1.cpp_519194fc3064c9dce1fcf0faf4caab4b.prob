@@ -1,0 +1,1 @@
+{"name":"Local: 1","url":"c:\\Users\\Asus\\Desktop\\CP\\TLE\\1000\\1.cpp","tests":[{"id":1704521325786,"input":"4\n0\n011\n0101110001\n111100","output":"1\n1\n0\n4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Asus\\Desktop\\CP\\TLE\\1000\\1.cpp","group":"local","local":true}
