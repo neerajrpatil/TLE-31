@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+const int MX = (1LL << 31) - 1; // default value,extra nodes ka
+struct Node
+{
+    long long val;
+    Node() : val(MX) {}
+    Node(long long v) : val(v) {}
+    friend Node merge(Node l, Node r) { return Node(l.val & r.val); } // merge kese karu
+    void update(long long v) { val = v; }                             //
+};
+
+struct SegmentTree
+{
+    int n;
+    vector<Node> seg;
+    SegmentTree(int _n) : n(_n), seg(2 * _n) {}
+    template <typename Type>
+    SegmentTree(vector<Type> a)
+    {
+        n = int(a.size());
+        seg.resize(2 * n);
+        for (int i = 0; i < n; i++)
+            seg[i + n] = Node(a[i]);
+        for (int i = n - 1; i > 0; i--)
+            seg[i] = merge(seg[i << 1], seg[i << 1 | 1]);
+    }
+    void update(int i, long long v)
+    {
+        for (seg[i += n].update(v); i >>= 1;)
+            seg[i] = merge(seg[i << 1], seg[i << 1 | 1]);
+    }
+    Node query(int l, int r)
+    {
+        Node resl, resr;
+        for (l += n, r += n + 1; l < r; l >>= 1, r >>= 1)
+        {
+            if (l & 1)
+                resl = merge(resl, seg[l++]);
+            if (r & 1)
+                resr = merge(seg[--r], resr);
+        }
+        return merge(resl, resr);
+    }
+};
+int minimumDifference(vector<int> &a, int k)
+{
+
+    SegmentTree sg(a);
+    // sg.query(i,j);
+    return 0;
+}
