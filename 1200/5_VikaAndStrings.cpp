@@ -115,32 +115,20 @@ int main()
     cin >> t;
     while (t--)
     {
-        /*
-        1.every col is independent
-        2.since i am taking abs,order do not matter,i can sort,then try to derive
-
-
-
-        */
-        int n, m;
-        cin >> n >> m;
-        vector<vector<int>> arr(m, vector<int>(n, 0));
-
-        for (int i = 0; i < m; i++)
+        int n, k;
+        cin >> n >> k;
+        unordered_map<int, vector<int>> mp;
+        for (int i = 0; i < n; i++)
         {
-            for (int j = 0; j < n; j++)
-            {
-                cin >> arr[i][j];
-            }
+            int ele;
+            cin >> ele;
+            mp[ele].push_back(i);
         }
-        for (int i = 0; i < m; i++)
+        int ans = INT_MAX;
+        for (auto it : mp)
         {
-            for (int j = 0; j < n; j++)
-            {
-                cout << arr[i][j] << " ";
-            }
-            cout << endl;
         }
+        cout << ans << endl;
     }
     return 0;
 }

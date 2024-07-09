@@ -119,9 +119,41 @@ int main()
         int n;
         cin >> n;
         vector<int> v(n);
+        set<int> st;
         for (auto &it : v)
-            cin >> it;
-        int maxi[n];
+        {
+            int ele;
+            cin >> ele;
+            it = ele;
+            st.insert(ele);
+        }
+        bool chk = 1;
+        int l = 0, r = n - 1;
+        while (l < r)
+        {
+            int a = v[l], b = v[r];
+            int mi = *st.begin(), ma = *st.rbegin();
+            if (a == mi || a == ma)
+            {
+                l++;
+                st.erase(a);
+            }
+
+            else if (b == mi || b == ma)
+            {
+                r--;
+                st.erase(b);
+            }
+
+            else
+            {
+                cout << l + 1 << " " << r + 1 << endl;
+                chk = 0;
+                break;
+            }
+        }
+        if (chk)
+            cout << -1 << endl;
     }
     return 0;
 }
